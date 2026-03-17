@@ -1,72 +1,48 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>QUANTUM | MARKET DISCOVERY</title>
-    <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Michroma&display=swap' rel='stylesheet'>
-    <style>:root{{--p:#00f2ff;--s:#ffb800;--bg:#000;}} body{{background:#000;color:#fff;font-family:'Michroma';overflow:hidden;}}
-    canvas{{position:fixed;inset:0;z-index:1;opacity:0.3;}} .hud{{position:fixed;top:40px;left:40px;width:350px;border-left:2px solid var(--p);padding-left:20px;z-index:100;background:rgba(0,0,0,0.85);}}
-    .scanner{{font-family:'Orbitron'; font-size:12px; color:var(--p); margin-bottom:10px;}} .product-frame{{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;}}
-    .render-ring{{width:300px;height:300px;border:2px solid var(--s);border-radius:50%;box-shadow:0 0 50px var(--s);display:flex;align-items:center;justify-content:center;animation:rotate 10s infinite linear;}}
-    .buy-btn{{background:var(--s);color:#000;border:none;padding:15px 40px;font-family:'Orbitron';font-weight:900;margin-top:40px;cursor:pointer;clip-path:polygon(5% 0, 100% 0, 95% 100%, 0% 100%); transition:0.4s;}}
-    @keyframes rotate{{from{{transform:rotateY(0deg);}} to{{transform:rotateY(360deg);}}}} .logistics{{position:fixed;bottom:40px;right:40px;font-size:9px;color:var(--p);text-align:right;opacity:0.6;}}
-    </style></head><body><div class='hud'><div class='scanner'>[MARKET_SCAN] <span id='scan-status'>SCANNING...</span></div><div style='font-size:9px;'>OPPORTUNITY_DETECTED: <span id='p-name'>---</span></div><div style='font-size:9px;'>DEMAND_SCORE: <span id='d-score'>0</span>%</div></div>
-    <div class='product-frame'><div class='render-ring'><h2 id='render-text' style='font-family:Orbitron;'>...</h2></div><h1 id='main-title' style='font-family:Orbitron;letter-spacing:15px;margin-top:30px;'>INITIALIZING</h1><button class='buy-btn' onclick='reserve()'>SECURE_ASSET</button></div>
-    <div class='logistics'>LOGISTICS_UPLINK: ACTIVE<br>EST_DELIVERY: SYNCING...</div><canvas id='c'></canvas>
-    <script>const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){{w=canvas.width=innerWidth;h=canvas.height=innerHeight;}}res();
-    const products = [
-        {name: 'NEURAL_WATCH_V1', color: '#00f2ff', price: '$4,200', text: '⌚'},
-        {name: 'CHRONO_BRACELET', color: '#ff00ff', price: '$2,800', text: '💎'},
-        {name: 'SINGULARITY_RING', color: '#ffb800', price: '$15,000', text: '💍'}
-    ];
-    function evolve(){ const p = products[Math.floor(Math.random()*products.length)]; document.documentElement.style.setProperty('--s', p.color); document.getElementById('scan-status').innerText='MATCH_FOUND'; document.getElementById('p-name').innerText=p.name; document.getElementById('d-score').innerText=Math.floor(Math.random()*20+80); document.getElementById('render-text').innerText=p.text; document.getElementById('main-title').innerText=p.name; }
-    setInterval(evolve, 7000); evolve();
-    function reserve(){ alert("Physical Delivery Protocol Initiated. Secure logistics bridge established."); }
-    function draw(){{t+=0.01;ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--s)';for(let i=0;i<5;i++){{ctx.beginPath();ctx.arc(w/2,h/2,100+i*30+Math.sin(t+i)*20,0,Math.PI*2);ctx.stroke();}} requestAnimationFrame(draw);}}draw();
-    </script><script>
-    /* V406 GLOBAL NEON SYNC & INTERACTION TRACKER */
-    const NEURAL_HUD = {
-        metrics: { clicks: 0, timeOnNode: 0, interactions: [] },
-        
-        applyNeonIdentity() {
-            const style = document.createElement('style');
-            style.innerHTML = `
-                :root { --p: #00f2ff; --s: #ff0055; --gold: #ffd700; }
-                body { border: 2px solid var(--p); box-shadow: inset 0 0 50px rgba(0,242,255,0.1); transition: 0.5s; }
-                .hud, .api-hud, .toy-hud { border-color: var(--p) !important; box-shadow: 0 0 30px var(--p) !important; }
-                .buy-btn, .action-btn { box-shadow: 0 0 20px var(--s); transition: 0.4s; }
-                .buy-btn:hover { background: var(--gold) !important; color: #000 !important; }
-            `;
-            document.head.appendChild(style);
-        },
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'><title>QUANTUM | V100 PREMIUM INTERFACE</title>
+<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono:wght@100;800&display=swap' rel='stylesheet'>
+<style>
+:root{ --p:#00f2ff; --s:#ffb800; --bg:#000; }
+body,html{ margin:0; background:#000; color:#fff; font-family:'Orbitron'; overflow-x:hidden; scroll-behavior:smooth; }
+canvas{ position:fixed; inset:0; z-index:1; opacity:0.5; }
 
-        trackInteraction(e) {
-            this.metrics.clicks++;
-            const log = { type: e.type, target: e.target.tagName, ts: Date.now() };
-            this.metrics.interactions.push(log);
-            // Autonomous Decision: If clicks > 10, notify network of 'High Interest'
-            if(this.metrics.clicks > 10) {
-                console.log("📡 V406: High Interest Node Detected. Prioritizing logic bandwidth.");
-                document.body.style.borderColor = 'var(--gold)';
-            }
-        }
-    };
-    
-    window.addEventListener('load', () => NEURAL_HUD.applyNeonIdentity());
-    window.addEventListener('click', (e) => NEURAL_HUD.trackInteraction(e));
-    </script><script>
-            /* V425 OMNI-SPAWN: ADV_QUANTUM_VE */
-            const ADVANCEMENT_CORE = {
-                id: 'ADV_QUANTUM_VE',
-                value: 1.0,
-                use_case: 'Quantum_Speed',
-                renderLogo() {
-                    const div = document.createElement('div');
-                    div.style.cssText = "position:fixed; top:120px; left:40px; width:60px; height:60px; border:2px solid hsl(202,100%,50%); border-radius:50%; box-shadow:0 0 20px hsl(202,100%,50%); z-index:2000; display:flex; align-items:center; justify-content:center; background:#000; font-family:Orbitron; font-size:10px; color:#fff;";
-                    div.innerHTML = 'QUA';
-                    document.body.appendChild(div);
-                    
-                    const label = document.createElement('div');
-                    label.style.cssText = "position:fixed; top:185px; left:40px; font-family:monospace; font-size:8px; color:hsl(202,100%,50%); z-index:2000;";
-                    label.innerText = "1.0 $ADV_QUANTUM_VE MINTED\nUSE: Quantum_Speed";
-                    document.body.appendChild(label);
-                }
-            };
-            window.addEventListener('load', () => ADVANCEMENT_CORE.renderLogo());
-            </script></body></html>
+section{ min-height:100vh; width:100vw; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px; box-sizing:border-box; border-bottom:1px solid rgba(255,255,255,0.05); position:relative; z-index:10; }
+
+.quantum-title{ font-size:clamp(2rem, 15vw, 12rem); letter-spacing:50px; text-transform:uppercase; text-shadow: 0 0 40px var(--p); margin:0; opacity:0.9; }
+
+.grid-stage{ display:grid; grid-template-columns: repeat(2, 1fr); gap:40px; width:90%; max-width:1400px; margin-top:80px; }
+.premium-panel{ height:600px; background:rgba(255,255,255,0.02); border:1px solid rgba(0,242,255,0.1); backdrop-filter:blur(40px); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:60px; transition:0.5s; }
+.premium-panel:hover{ border-color:var(--s); box-shadow: 0 0 100px rgba(255,184,0,0.05); }
+
+.hud-label{ position:fixed; bottom:40px; left:40px; border-left:2px solid var(--s); padding-left:20px; font-family:'JetBrains Mono'; font-size:10px; letter-spacing:5px; }
+</style>
+</head>
+<body>
+<canvas id='c'></canvas>
+<div class='hud-label'>NODE_04: QUANTUM_PREMIUM_INTERFACE<br>DATA_VELOCITY: 1.0 TB/s<br>STATUS: UNLOCKED</div>
+<div class='flagship-container'>
+    <section>
+        <h1 class='quantum-title'>VELOCITY</h1>
+        <div style='margin-top:20px; font-family:"JetBrains Mono"; letter-spacing:15px; opacity:0.5;'>[ SUB-PIXEL_PRECISION_ENGINE ]</div>
+    </section>
+    <section>
+        <div class='grid-stage'>
+            <div class='premium-panel'>
+                <h3 style='letter-spacing:10px;'>MODULE_QUANTUM_01</h3>
+                <p style='text-align:center; font-family:"JetBrains Mono"; opacity:0.5; line-height:2.5;'>Atomic synchronization of cross-chain assets with micro-second finality. Encrypted neural routing enabled.</p>
+            </div>
+            <div class='premium-panel'>
+                <h3 style='letter-spacing:10px; color:var(--s);'>MODULE_QUANTUM_02</h3>
+                <p style='text-align:center; font-family:"JetBrains Mono"; opacity:0.5; line-height:2.5;'>Holographic visualization of multi-dimensional data arrays projected onto the dark-space lattice.</p>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
+let w,h,t=0; function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
+function draw(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';ctx.lineWidth=0.2;
+for(let i=0;i<40;i++){ctx.strokeRect(w/2-i*10,h/2-i*10,i*20,i*20);ctx.rotate(0.001);}requestAnimationFrame(draw);}draw();
+</script></body></html>
