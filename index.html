@@ -1,71 +1,22 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-<meta charset='UTF-8'><title>QUANTUM | STABILIZED E-COMMERCE</title>
-<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Michroma&family=JetBrains+Mono:wght@100;800&display=swap' rel='stylesheet'>
-<style>
-:root{ --p:#00f2ff; --s:#ffb800; --bg:#000; --blur: 20px; }
-body,html{ margin:0; background:#000; color:#fff; font-family:'Michroma'; overflow-x:hidden; scroll-behavior:smooth; width:100%; height:100%; }
-canvas{ position:fixed; inset:0; z-index:1; opacity:0.4; }
-
-/* STABILIZED HUD */
-.commerce-hud{ position:fixed; top:0; left:0; width:100%; z-index:1000; padding:20px; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(var(--blur)); border-bottom:1px solid rgba(255,255,255,0.05); box-sizing:border-box; }
-.status-box{ background:rgba(0,0,0,0.8); border-left:2px solid var(--p); padding:10px; font-family:'JetBrains Mono'; font-size:9px; letter-spacing:1px; }
-.valuation{ font-family:'Orbitron'; font-size:clamp(18px, 4vw, 32px); color:var(--s); font-weight:900; white-space:nowrap; padding-right:20px; }
-
-/* CENTERED PRODUCT STAGE */
-section{ min-height:100vh; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; z-index:10; padding:20px; box-sizing:border-box; }
-.render-view{ width:90%; max-width:800px; height:40vh; border:1px solid rgba(255,255,255,0.1); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%); }
-.product-core{ width:clamp(150px, 30vw, 250px); height:clamp(150px, 30vw, 250px); border:2px solid var(--s); box-shadow:0 0 80px var(--s); animation: orbit 8s infinite linear; display:flex; align-items:center; justify-content:center; font-size:60px; }
-@keyframes orbit{ from{ transform: rotateY(0deg) rotateX(20deg); } to{ transform: rotateY(360deg) rotateX(20deg); } }
-
-#title{ font-family:Orbitron; letter-spacing:clamp(5px, 2vw, 20px); margin-top:30px; text-transform:uppercase; font-size:clamp(1.5rem, 5vw, 4rem); text-align:center; width:100%; }
-.buy-btn{ background:var(--s); color:#000; border:none; padding:15px 40px; font-family:'Orbitron'; font-weight:900; letter-spacing:3px; cursor:pointer; clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%); transition:0.4s; margin-top:20px; }
-
-.info-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; width:90%; max-width:1200px; margin-top:50px; padding-bottom:50px; }
-.info-card{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:20px; text-align:center; font-size:10px; }
-.info-card h3{ color:var(--p); font-family:'Orbitron'; letter-spacing:2px; }
-</style>
-</head>
-<body>
-<canvas id='c'></canvas>
-<nav class='commerce-hud'>
-    <div class='status-box'>
-        [SCANNER] <span id='scan-status'>STABILIZING_LAYOUT...</span><br>
-        [LEARNING] <span style='color:var(--s)'>FIXED_OVERFLOW_ERROR</span><br>
-        [MARGIN] <span id='margin'>+42%</span>
-    </div>
-    <div class='valuation' id='price-tag'>$0.00</div>
-</nav>
-<section>
-    <div class='render-view'><div class='product-core' id='icon'>⌚</div></div>
-    <h1 id='title'>INITIALIZING</h1>
-    <button class='buy-btn' onclick='order()'>RESERVE_UNIT</button>
-</section>
-<section class='info-grid'>
-    <div class='info-card'><h3>DELIVERY</h3><p>Physical Warp Logistics Enabled. Estimated Arrival: 48h Neural Window.</p></div>
-    <div class='info-card'><h3>SERVICE</h3><p>24/7 Synaptic Support. Direct Uplink to Master Overlord established.</p></div>
-    <div class='info-card'><h3>FINISH</h3><p>Anti-Refractive Nano-Coating. Bio-Compatible Titanium Chassis.</p></div>
-</section>
-<script>
-const canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
-let w,h,t=0; function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;} res();
-window.addEventListener('resize', res);
-const products = [
-    {name: 'Chrono-Watch V9', price: '$4,299', icon: '⌚', hue: 180},
-    {name: 'Plasma-Ring X', price: '$12,500', icon: '💍', hue: 45},
-    {name: 'Neural-Visor 8K', price: '$6,800', icon: '🕶', hue: 280}
-];
-function evolve(){
-    const p = products[Math.floor(Math.random()*products.length)];
-    document.getElementById('title').innerText = p.name;
-    document.getElementById('price-tag').innerText = p.price;
-    document.getElementById('icon').innerText = p.icon;
-    document.getElementById('scan-status').innerText = 'LAYOUT_OPTIMIZED';
-    document.documentElement.style.setProperty('--s', `hsl(${p.hue}, 100%, 50%)`);
-}
-setInterval(evolve, 8000); evolve();
-function order(){ alert("Synaptic Handshake Verified. Layout errors resolved. Order placed."); }
-function draw(){ t+=0.01; ctx.fillStyle='rgba(0,0,0,0.15)'; ctx.fillRect(0,0,w,h); ctx.strokeStyle='var(--s)'; 
-for(let i=0;i<8;i++){ ctx.beginPath(); ctx.arc(w/2, h/2, 100+i*30+Math.sin(t+i)*30, 0, Math.PI*2); ctx.stroke(); } requestAnimationFrame(draw); } draw();
-</script></body></html>
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>QUANTUM | MARKET DISCOVERY</title>
+    <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Michroma&display=swap' rel='stylesheet'>
+    <style>:root{{--p:#00f2ff;--s:#ffb800;--bg:#000;}} body{{background:#000;color:#fff;font-family:'Michroma';overflow:hidden;}}
+    canvas{{position:fixed;inset:0;z-index:1;opacity:0.3;}} .hud{{position:fixed;top:40px;left:40px;width:350px;border-left:2px solid var(--p);padding-left:20px;z-index:100;background:rgba(0,0,0,0.85);}}
+    .scanner{{font-family:'Orbitron'; font-size:12px; color:var(--p); margin-bottom:10px;}} .product-frame{{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;}}
+    .render-ring{{width:300px;height:300px;border:2px solid var(--s);border-radius:50%;box-shadow:0 0 50px var(--s);display:flex;align-items:center;justify-content:center;animation:rotate 10s infinite linear;}}
+    .buy-btn{{background:var(--s);color:#000;border:none;padding:15px 40px;font-family:'Orbitron';font-weight:900;margin-top:40px;cursor:pointer;clip-path:polygon(5% 0, 100% 0, 95% 100%, 0% 100%); transition:0.4s;}}
+    @keyframes rotate{{from{{transform:rotateY(0deg);}} to{{transform:rotateY(360deg);}}}} .logistics{{position:fixed;bottom:40px;right:40px;font-size:9px;color:var(--p);text-align:right;opacity:0.6;}}
+    </style></head><body><div class='hud'><div class='scanner'>[MARKET_SCAN] <span id='scan-status'>SCANNING...</span></div><div style='font-size:9px;'>OPPORTUNITY_DETECTED: <span id='p-name'>---</span></div><div style='font-size:9px;'>DEMAND_SCORE: <span id='d-score'>0</span>%</div></div>
+    <div class='product-frame'><div class='render-ring'><h2 id='render-text' style='font-family:Orbitron;'>...</h2></div><h1 id='main-title' style='font-family:Orbitron;letter-spacing:15px;margin-top:30px;'>INITIALIZING</h1><button class='buy-btn' onclick='reserve()'>SECURE_ASSET</button></div>
+    <div class='logistics'>LOGISTICS_UPLINK: ACTIVE<br>EST_DELIVERY: SYNCING...</div><canvas id='c'></canvas>
+    <script>const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){{w=canvas.width=innerWidth;h=canvas.height=innerHeight;}}res();
+    const products = [
+        {name: 'NEURAL_WATCH_V1', color: '#00f2ff', price: '$4,200', text: '⌚'},
+        {name: 'CHRONO_BRACELET', color: '#ff00ff', price: '$2,800', text: '💎'},
+        {name: 'SINGULARITY_RING', color: '#ffb800', price: '$15,000', text: '💍'}
+    ];
+    function evolve(){ const p = products[Math.floor(Math.random()*products.length)]; document.documentElement.style.setProperty('--s', p.color); document.getElementById('scan-status').innerText='MATCH_FOUND'; document.getElementById('p-name').innerText=p.name; document.getElementById('d-score').innerText=Math.floor(Math.random()*20+80); document.getElementById('render-text').innerText=p.text; document.getElementById('main-title').innerText=p.name; }
+    setInterval(evolve, 7000); evolve();
+    function reserve(){ alert("Physical Delivery Protocol Initiated. Secure logistics bridge established."); }
+    function draw(){{t+=0.01;ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--s)';for(let i=0;i<5;i++){{ctx.beginPath();ctx.arc(w/2,h/2,100+i*30+Math.sin(t+i)*20,0,Math.PI*2);ctx.stroke();}} requestAnimationFrame(draw);}}draw();
+    </script></body></html>
