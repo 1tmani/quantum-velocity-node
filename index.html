@@ -17,7 +17,22 @@ section{ min-height:100vh; width:100vw; display:flex; flex-direction:column; ali
 .premium-panel:hover{ border-color:var(--s); box-shadow: 0 0 100px rgba(255,184,0,0.05); }
 
 .hud-label{ position:fixed; bottom:40px; left:40px; border-left:2px solid var(--s); padding-left:20px; font-family:'JetBrains Mono'; font-size:10px; letter-spacing:5px; }
-</style>
+
+    /* V1000 READABILITY & SPACING OPTIMIZATION */
+    h1, h2, h3, .node-name, .quantum-title, .logo { letter-spacing: 12px !important; }
+    p, .node-card p, .info-card p, body { line-height: 2.2 !important; }
+
+    @media (max-width: 768px) {
+        h1, .quantum-title { font-size: 2rem !important; letter-spacing: 8px !important; }
+        .container, section { padding: 30px 15px !important; }
+        .node-grid, .grid-stage { grid-template-columns: 1fr !important; }
+        .commerce-hud, .hud-label { padding: 10px !important; font-size: 8px !important; }
+    }
+
+    /* Scroll Animation Base State */
+    section, .node-card, .premium-panel { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    .reveal-active { opacity: 1 !important; transform: translateY(0) !important; }
+    </style>
 
     <meta name="description" content="High-fidelity autonomous network node providing real-time data throughput, neural logic solving, and secure blockchain ledgering.">
     <meta name="keywords" content="Neural, Autonomous, Blockchain, Infra, V500, High-Fidelity">
@@ -50,4 +65,17 @@ function draw(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);c
 for(let i=0;i<40;i++){ctx.strokeRect(w/2-i*10,h/2-i*10,i*20,i*20);ctx.rotate(0.001);}requestAnimationFrame(draw);}draw();
 </script>
     <footer style='margin-top:50px; border-top:1px solid rgba(0,242,255,0.1); padding:20px; font-size:10px;'><div style='display:flex; gap:15px; opacity:0.6;'><a href='https://1tmani.github.io/synaptic-overlord/' style='color:#00f2ff; text-decoration:none;'>SYNAPTIC_OVERLORD</a><a href='https://1tmani.github.io/futuristic-core-brain/' style='color:#00f2ff; text-decoration:none;'>FUTURISTIC_CORE_BRAIN</a><a href='https://1tmani.github.io/stability-miner-node/' style='color:#00f2ff; text-decoration:none;'>STABILITY_MINER_NODE</a><a href='https://1tmani.github.io/quantum-nexus-design-584/' style='color:#00f2ff; text-decoration:none;'>QUANTUM_NEXUS_DESIGN_584</a><a href='https://1tmani.github.io/data-sentinel/' style='color:#00f2ff; text-decoration:none;'>DATA_SENTINEL</a><a href='https://1tmani.github.io/ecosystem-omni-dashboard/' style='color:#00f2ff; text-decoration:none;'>ECOSYSTEM_OMNI_DASHBOARD</a></div></footer>
+<script>
+    /* V1000 VISUAL TRANSITION LOGIC */
+    const UI_OBSERVER = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) entry.target.classList.add('reveal-active');
+        });
+    }, { threshold: 0.1 });
+
+    window.addEventListener('load', () => {
+        document.querySelectorAll('section, .node-card, .premium-panel').forEach(el => UI_OBSERVER.observe(el));
+        console.log('👁️ V1000 UI Optimizer: Handshake Verified');
+    });
+    </script>
 </body></html>
